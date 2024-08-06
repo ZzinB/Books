@@ -1,5 +1,6 @@
 package com.example.demo.util;
 
+import ch.qos.logback.core.encoder.EchoEncoder;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,15 @@ class S3UploaderTest {
 
             log.info(uploadName);
         }catch (Exception e){
+            log.error(e.getMessage());
+        }
+    }
+
+    @Test
+    public void testRemove(){
+        try {
+            s3Uploader.removeS3File("test.png");
+        } catch (Exception e){
             log.error(e.getMessage());
         }
     }
